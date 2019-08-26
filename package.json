@@ -15,5 +15,25 @@
   "bugs": {
     "url": "https://github.com/gminova/latest-news/issues"
   },
-  "homepage": "https://github.com/gminova/latest-news#readme"
+  "homepage": "https://github.com/gminova/latest-news#readme",
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-plugin-react": "^7.14.3",
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.12.1",
+    "serve-favicon": "^2.5.0"
+  }
 }
