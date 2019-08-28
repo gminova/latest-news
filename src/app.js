@@ -11,7 +11,7 @@ const controllers = require('./controllers');
 //import helpers
 const helpers = require('./views/helpers');
 
-
+//define app
 const app = express();
 
 // set up view engine
