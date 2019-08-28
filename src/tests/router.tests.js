@@ -17,3 +17,14 @@ test('Check home route renders correctly', t => {
         t.end();
     });
 });
+
+test('Check 404 route renders correctly', t => {
+    supertest(app)
+    .get('/404')
+    .expect(404)
+    .expect('Content-type', /html/)
+    .end((err, res) => {
+        t.equals(null, err, 'No error with 404 route');
+        t.end();
+    });
+});
