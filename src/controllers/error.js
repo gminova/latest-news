@@ -6,7 +6,7 @@ exports.client = (req, res) => {
     });
 };
 
-exports.server = (res, res) => {
+exports.server = (req, res) => {
     res.status(500).render('error', {
         layout: 'error',
         statusCode: 500,
