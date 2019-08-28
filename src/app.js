@@ -7,7 +7,9 @@ const favicon = require('serve-favicon');
 //to render pages in handlebar templates
 const handlebars = require('express-handlebars');
 //import controllers
-const controllers = require('./constrollers/index');
+const controllers = require('./controllers');
+//import helpers
+const helpers = require('./views/helpers');
 
 
 const app = express();
