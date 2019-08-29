@@ -11,4 +11,4 @@ const runDbBuild = () =>
             resolve(true);
         });
     });
-module.exports = { runDbBuild };
+module.exports = runDbBuild;
