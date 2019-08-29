@@ -4,7 +4,7 @@
   "description": "A full-stack app for people who like reading news online",
   "main": "src/index.js",
   "scripts": {
-    "build": "node src/model/db_build.js",
+    "build": "node src/model/db_init.js",
     "start": "node src/index.js",
     "watch": "nodemon src/index.js",
     "lint": "eslint .",

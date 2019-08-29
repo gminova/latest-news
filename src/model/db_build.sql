@@ -13,6 +13,7 @@ VALUES
 ('Mary', 'xxxxxxxxxxxxxxxx'),
 ('Connie', 'xxxxxxxxxxxxxxxx'),
 ('Jon', 'xxxxxxxxxxxxxxxx'),
-('Vanessa', 'xxxxxxxxxxxxxxxx');
+('Vanessa', 'xxxxxxxxxxxxxxxx'),
+('Robert', 'xxxxxxxxxxxxxxxx');
 
 COMMIT;

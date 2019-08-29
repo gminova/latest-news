@@ -1,8 +1,5 @@
-require("dotenv").config();
-
 const test = require('tape');
-const runDbBuild = require('../model/db_build');
-const dbConnection = require("../model/db_connection");
+const runDbBuild = require("../src/model/database/db_build");
 
 test('Check that we\'re ready for testing', t => {
     t.assert(true, true, 'Must return true');
