@@ -28,3 +28,14 @@ test('Check 404 route renders correctly', t => {
         t.end();
     });
 });
+
+test('Check 500 route renders correctly', t => {
+    supertest(app)
+    .get('/test')
+    .expect(500)
+    .expect('Content-type', /html/)
+    .end((err, res) => {
+        t.equals(null, err, 'No error with 500 route');
+        t.end();
+    })
+})
