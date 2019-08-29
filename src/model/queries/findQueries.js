@@ -1,6 +1,6 @@
 const dbConnection = require('../db_connection');
 
-const checkUsername = (username, cb) => {
+const findUsername = (username, cb) => {
     dbConnection.query(
         'SELECT username FROM users WHERE username ILIKE $1',
         [username],
@@ -11,8 +11,15 @@ const checkUsername = (username, cb) => {
     );
 };
 
-const compareHashedPassword = (username, hashedPassword) => {
-    return false;
+const findHashedPassword = (username, cb) => {
+    dbConnection.query(
+        'SELECT password_hash FROM users WHERE username ILIKE $1',
+        [username],
+        (err, res) => {
+            if (err) return cb(err);
+            cb(res);
+        }
+    );
 }
 
-module.exports = { checkUsername, compareHashedPassword }
+module.exports = { findUsername, findHashedPassword }

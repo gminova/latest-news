@@ -1,6 +1,6 @@
 const test = require('tape');
 const runDbBuild = require('../model/db_build');
-const { checkUsername, compareHashedPassword } = require('../model/queries/findQueries');
+const { findUsername, findHashedPassword } = require('../model/queries/findQueries');
 
 test('Check that we\'re ready for database testing', t => {
     t.assert(true, true, 'Must return true');
@@ -22,7 +22,7 @@ test("Check test database build is successful", t => {
 
 test('Check username is already registered', t => {
     const expected = 'Vanessa';
-    checkUsername(expected, (res) => {
+    findUsername(expected, (res) => {
         const actual = res.rows[0].username;
         t.equals(expected, actual, 'Username is already registered');
         t.end();
@@ -31,9 +31,18 @@ test('Check username is already registered', t => {
 
 test('Check username hasn\'t been registered', t => {
     const expected = 'Martin';
-    checkUsername(expected, (res) => {
+    findUsername(expected, (res) => {
         const actual = res.rows.length;
         t.equals(actual, 0, 'Username hasn\'t been registered');
+        t.end();
+    });
+});
+
+test('Check username\'s hash is retrieved', t => {
+    const username = 'Vanessa';
+    findHashedPassword(username, (res) => {
+        const actual = res.rows[0].password_hash;
+        t.equals(actual, 'ddddddddddddddddd', 'Username\'s hash is retrieved');
         t.end();
     });
 });
