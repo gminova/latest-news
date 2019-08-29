@@ -1,6 +1,6 @@
 const test = require('tape');
 const runDbBuild = require('../model/db_build');
-const { findUsername, findHashedPassword } = require('../model/queries/findQueries');
+const { findUsername, findHashedPassword } = require('../model/queries/readQueries');
 
 test('Check that we\'re ready for database testing', t => {
     t.assert(true, true, 'Must return true');
