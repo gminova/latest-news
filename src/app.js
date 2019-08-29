@@ -13,7 +13,7 @@ const helpers = require('./views/helpers');
 //parse incoming request bodies in a middleware
 const bodyParser = require('body-parser');
 //parse Cookie header and populate req.cookies with an object keyed by the cookie names
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
 
 //define app
 const app = express();
@@ -41,11 +41,7 @@ app.use(
 );
 app.use(bodyParser.json())
 
-// app.use(function (req, res) {
-//     res.setHeader('Content-Type', 'text/plain')
-//     res.write('you posted:\n')
-//     res.end(JSON.stringify(req.body, null, 2))
-// })
+app.use(cookieParser());
 
 app.set('port', process.env.PORT || 3000);
 app.use(favicon(path.join(__dirname, '..', 'public', 'favicon.ico')));
