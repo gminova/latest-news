@@ -28,3 +28,12 @@ test('Check username is already registered', t => {
         t.end();
     });
 });
+
+test('Check username hasn\'t been registered', t => {
+    const expected = 'Martin';
+    checkUsername(expected, (res) => {
+        const actual = res.rows.length;
+        t.equals(actual, 0, 'Username hasn\'t been registered');
+        t.end();
+    });
+});
