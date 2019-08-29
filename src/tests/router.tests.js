@@ -19,6 +19,17 @@ test('Check home route renders correctly', t => {
     });
 });
 
+test('Check news route renders correctly', t => {
+    supertest(app)
+    .get('/news')
+    .expect(200)
+    .expect('Content-type', /html/)
+    .end((err, res) => {
+        t.equals(null, err, 'No error with news route');
+        t.end();
+    });
+});
+
 test('Check 404 route renders correctly', t => {
     supertest(app)
     .get('/404')
@@ -38,5 +49,5 @@ test('Check 500 route renders correctly', t => {
     .end((err, res) => {
         t.equals(null, err, 'No error with 500 route');
         t.end();
-    })
-})
+    });
+});
