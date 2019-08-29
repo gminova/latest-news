@@ -8,6 +8,11 @@ CREATE TABLE users (
     password_hash VARCHAR(250) NOT NULL
 );
 
-INSERT INTO users (username, password_hash) VALUES
-('tester', 'xxxx'),
-('user', 'xxxx');
+INSERT INTO users (username, password_hash)
+VALUES
+('Mary', 'xxxxxxxxxxxxxxxx'),
+('Connie', 'xxxxxxxxxxxxxxxx'),
+('Jon', 'xxxxxxxxxxxxxxxx'),
+('Vanessa', 'xxxxxxxxxxxxxxxx');
+
+COMMIT;
