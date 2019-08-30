@@ -8,7 +8,7 @@ const hash = (password, cb) => {
         if (err) cb(err);
         cb(hash);
     });
-}
+};
 
 
 //compare hashes
@@ -17,20 +17,20 @@ const compareHashes = (password, hash, cb) => {
         if (err) cb(err);
         cb(res);
     });
-}
+};
 
 //check user
 async function checkUser(username, password) {
-    const userData = await findHashedPassword(username).rows;
-    if (!userData.length !== 0) {
-        const match = await bcrypt.compare(password, user.passwordHash);
+    const userData = await findHashedPassword(username, (res) => {
+        console.log('im res async call ln 28', res)
+        const match = bcrypt.compare(password, res);
 
         if (match) {
             console.log('Successful log in');
         } else {
             console.log('Log in failed, please try again');
         }
-    };
-}
-
+    })
+    .catch('Unable to verify user credentials');
+};
 module.exports = { hash, compareHashes, checkUser }

@@ -1,5 +1,5 @@
 const test = require('tape');
-const { hash, compareHashes } = require('../controllers/helpers/authHelpers');
+const { hash, compareHashes, checkUser } = require('../controllers/helpers/authHelpers');
 
 test('Check that we\'re ready for authentication testing', t => {
     t.assert(true, true, 'Must return true');
@@ -24,4 +24,18 @@ test('Check a password is hashed correctly', t => {
             t.end();
         });
     });
+});
+
+
+test('Check user credentials are correct', t => {
+    const username = 'mary';
+    const password = 'superSecret123^';
+    checkUser(username, password)
+        .then(res => {
+            t.equals(res, true, 'User credentials are correct');
+            t.plan();
+        })
+        .catch(() => {
+            t.end('Unable to verify user credentials');
+        });
 });
