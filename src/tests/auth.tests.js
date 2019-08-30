@@ -25,13 +25,3 @@ test('Check a password is hashed correctly', t => {
         });
     });
 });
-
-// test('Check user credentials are correct', t => {
-//     const username = 'mary';
-//     const password = 'superSecret123^';
-//     checkUser(username, password)
-//         .then(() => {
-//             t.assert('User credentials are correct');
-//             t.plan();
-//         });
-// });

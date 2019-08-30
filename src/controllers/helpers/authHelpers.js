@@ -1,6 +1,5 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const { findUsername, findHashedPassword } = require('../../model/queries/readQueries');
 
 //generate hashed password
 const hash = (password, cb) => {
@@ -19,13 +18,4 @@ const compareHashes = (password, hash, cb) => {
     });
 };
 
-const checkUser = 0;
-//check user
-// async function checkUser(username, password) {
-// 	try {
-// 		const match = await axios.get(`/users/userId=${users[0]}`);
-// 	} catch (err) {
-// 		console.log(err);
-// 	}
-// }
-module.exports = { hash, compareHashes, checkUser }
+module.exports = { hash, compareHashes }
