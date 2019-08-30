@@ -19,7 +19,14 @@ const compareHashes = (password, hash, cb) => {
 };
 
 //create cookie/JWT
-const cookie = sign(username, SECRET);
+const cookie = (username) => sign(username, SECRET);
 
+const verifyCookie = (cookie, SECRET, cb) => cookie.verify(cookie, SECRET, (err, cookie) => {
+    if (err) {
+        throw Error('Invalid cookie');
+    } else {
+        return cookie;
+    }
+);
 
 module.exports = { hash, compareHashes }
