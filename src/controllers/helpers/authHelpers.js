@@ -1,5 +1,8 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const { parse } = require("cookie");
+const { sign, verify } = require("jsonwebtoken");
+const SECRET = process.env.SECRET;
 
 //generate hashed password
 const hash = (password, cb) => {
@@ -12,10 +15,7 @@ const hash = (password, cb) => {
 
 //compare hashes
 const compareHashes = (password, hash, cb) => {
-    bcrypt.compare(password, hash, (err, res) => {
-        if (err) cb(err);
-        cb(res);
-    });
+    bcrypt.compare(password, hash, cb);
 };
 
 module.exports = { hash, compareHashes }
