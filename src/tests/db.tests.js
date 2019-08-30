@@ -69,3 +69,14 @@ test('Check username has been updated', t => {
         t.end();
     });
 });
+
+test('Check password has been updated', t => {
+    const newPasswordHash = 'mmmmmmmmmmmmmmmm';
+    const oldPasswordHash = 'ssssssssssssssss';
+    const username = 'Martina';
+    updatePassword(newPasswordHash, oldPasswordHash, username, (res) => {
+        const actual = res.rowCount;
+        t.equals(actual, 1, 'Password has been updated');
+        t.end();
+    });
+});
