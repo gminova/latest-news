@@ -1,6 +1,9 @@
 {
   "name": "y",
   "version": "1.0.0",
+  "engines": {
+    "node": "v10.16.0"
+  },
   "description": "A full-stack app for people who like reading news online",
   "main": "src/index.js",
   "scripts": {
