@@ -45,14 +45,14 @@ test('Check username\'s hash is retrieved', t => {
     const username = 'vanessa';
     findHashedPassword(username, (res) => {
         const actual = res.rows[0].password_hash;
-        t.equals(actual, 'ddddddddddddddddd', 'Username\'s hash is retrieved');
+        t.equals(actual, '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa', 'Username\'s hash is retrieved');
         t.end();
     });
 });
 
 test('Check new user has been created', t => {
     const username = 'sarah';
-    const hashedPassword = 'ssssssssssssssss';
+    const hashedPassword = '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa';
     createUser(username, hashedPassword, (res) => {
         const actual = res.rowCount;
         t.equals(actual, 1, 'New user has been created');
