@@ -18,4 +18,8 @@ const compareHashes = (password, hash, cb) => {
     bcrypt.compare(password, hash, cb);
 };
 
+//create cookie/JWT
+const cookie = sign(username, SECRET);
+
+
 module.exports = { hash, compareHashes }
