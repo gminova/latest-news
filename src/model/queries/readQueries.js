@@ -6,7 +6,7 @@ const findUsername = (username, cb) => {
         [username],
         (err, res) => {
             if (err) return cb(err);
-            cb(res);
+            return cb(res);
         }
     );
 };
@@ -17,7 +17,7 @@ const findHashedPassword = (username, cb) => {
         [username],
         (err, res) => {
             if (err) return cb(err);
-            cb(res);
+            return cb(res);
         }
     );
 }
