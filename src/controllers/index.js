@@ -11,18 +11,22 @@ const { findUsername, findHashedPassword } = require('../model/queries/readQueri
 const { updateUsername, updatePassword } = require('../model/queries/updateQueries');
 
 //import home route controller
-const home = require('./home');
 const news = require('./news');
 const error = require('./error');
 
 //get home route
-router.get('/', home.get);
+router.get('/', (req, res) => {
+    res.render('home', { activePage: { home: true } });
+});
 //register route
+router.get("/register", (req, res) => {
+    res.render("register");
+});
 router.post('/register', (req, res, next) => {
     const { username, password } = req.body;
-    findUsername(username, (res) => {
-        if (!res === []) {
-            new Error('Username is taken');
+    findUsername(username, (dbRes) => {
+        if (!dbRes === []) {
+            throw new Error('Username is taken');
         } else {
             createHash(password, (hash) => {
                 //register user in database
