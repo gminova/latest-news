@@ -26,7 +26,7 @@ test("Check test database build is successful", t => {
 test('Check username is already registered', t => {
     const expected = 'vanessa';
     findUsername(expected, (res) => {
-        const actual = res.rows[0].username;
+        const actual = res[0].username;
         t.equals(expected, actual, 'Username is already registered');
         t.end();
     });
@@ -35,8 +35,7 @@ test('Check username is already registered', t => {
 test('Check username hasn\'t been registered', t => {
     const expected = 'martin';
     findUsername(expected, (res) => {
-        const actual = res.rows.length;
-        t.equals(actual, 0, 'Username hasn\'t been registered');
+        t.deepEquals(res, [], 'Username hasn\'t been registered');
         t.end();
     });
 });
@@ -44,7 +43,7 @@ test('Check username hasn\'t been registered', t => {
 test('Check username\'s hash is retrieved', t => {
     const username = 'vanessa';
     findHashedPassword(username, (res) => {
-        const actual = res.rows[0].password_hash;
+        const actual = res[0].password_hash;
         t.equals(actual, '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa', 'Username\'s hash is retrieved');
         t.end();
     });

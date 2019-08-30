@@ -19,18 +19,13 @@ const compareHashes = (password, hash, cb) => {
     });
 };
 
+const checkUser = 0;
 //check user
-async function checkUser(username, password) {
-    const userData = await findHashedPassword(username, (res) => {
-        console.log('im res async call ln 28', res)
-        const match = bcrypt.compare(password, res);
-
-        if (match) {
-            console.log('Successful log in');
-        } else {
-            console.log('Log in failed, please try again');
-        }
-    })
-    .catch('Unable to verify user credentials');
-};
+// async function checkUser(username, password) {
+// 	try {
+// 		const match = await axios.get(`/users/userId=${users[0]}`);
+// 	} catch (err) {
+// 		console.log(err);
+// 	}
+// }
 module.exports = { hash, compareHashes, checkUser }
