@@ -10,9 +10,14 @@ test('Check that we\'re ready for authentication testing', t => {
 test('Check a password is hashed correctly', t => {
     const password = 'superSecret123^';
     hash(password, (hash) => {
+        console.log(hash)
         compareHashes(password, hash, (res) => {
             t.deepEquals(res, true, 'Password is hashed correctly');
             t.end();
         });
     });
 });
+
+// test('Check user credentials', t => {
+//     checkUser
+// })

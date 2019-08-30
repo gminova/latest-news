@@ -10,10 +10,10 @@ CREATE TABLE users (
 
 INSERT INTO users (username, password_hash)
 VALUES
-('mary', 'aaaaaaaaaaaaaaaaaa'),
-('connie', 'bbbbbbbbbbbbbbbb'),
-('jon', 'ccccccccccccccccc'),
-('vanessa', 'ddddddddddddddddd'),
-('robert', 'eeeeeeeeeeeeeeeeee');
+('mary', '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa'),
+('connie', '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa'),
+('jon', '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa'),
+('vanessa', '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa'),
+('robert', '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa');
 
 COMMIT;
