@@ -33,7 +33,13 @@ test('Cookie is generated successfully', t => {
     const username = 'mary';
     const expected = 'eyJhbGciOiJIUzI1NiJ9.bWFyeQ.eT3k0ExsBBYod-K8nRoDlrlro9RKy6GiieP4duikiu8';
     const cookie = createCookie(username);
-    console.log('test cookie', cookie)
     t.equals(cookie, expected, 'Cookie is generated successfully');
+    t.end();
+});
+
+test('Cookie is valid', t => {
+    const cookie = 'eyJhbGciOiJIUzI1NiJ9.bWFyeQ.eT3k0ExsBBYod-K8nRoDlrlro9RKy6GiieP4duikiu8';
+    const match = verifyCookie(cookie, SECRET);
+    t.equals(match, 'mary', 'Cookie is valid');
     t.end();
 });

@@ -25,9 +25,9 @@ const createCookie = (username) => {
     return cookie;
 };
 
-const verifyCookie = (cookie, SECRET, cb) => cookie.verify(cookie, SECRET, (err, cookie) => {
-    if (err) cb(err);
-    cb(cookie);
-});
+const verifyCookie = (cookie, SECRET) => {
+    const res = verify(cookie, SECRET);
+    return res;
+};
 
 module.exports = { createHash, compareHashes, createCookie, verifyCookie }
