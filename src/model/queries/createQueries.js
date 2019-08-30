@@ -9,7 +9,6 @@ const createUser = (username, hashedPassword, cb) => {
             return cb(res);
         }
     );
-
 }
 
 module.exports = { createUser }

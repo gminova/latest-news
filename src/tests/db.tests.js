@@ -2,6 +2,7 @@ const test = require('tape');
 const runDbBuild = require('../model/db_build');
 const { findUsername, findHashedPassword } = require('../model/queries/readQueries');
 const { createUser } = require('../model/queries/createQueries');
+const { updateUsername, updatePassword } = require('../model/queries/updateQueries');
 
 test('Check that we\'re ready for database testing', t => {
     t.assert(true, true, 'Must return true');
@@ -53,7 +54,18 @@ test('Check new user has been created', t => {
     const hashedPassword = 'ssssssssssssssss';
     createUser(username, hashedPassword, (res) => {
         const actual = res.rowCount;
-        t.equals(actual, 1, 'New user has been created')
+        t.equals(actual, 1, 'New user has been created');
+        t.end();
+    });
+});
+
+test('Check username has been updated', t => {
+    const newUsername = 'Martina';
+    const oldUsername = 'Sarah';
+    const hashedPassword = 'ssssssssssssssss';
+    updateUsername(newUsername, oldUsername, hashedPassword, (res) => {
+        const actual = res.rowCount;
+        t.equals(actual, 1, 'Username has been updated');
         t.end();
     });
 });
