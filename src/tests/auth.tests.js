@@ -4,8 +4,8 @@ const SECRET = process.env.SECRET;
 const { createHash, compareHashes, createCookie, verifyCookie } = require('../controllers/helpers/authHelpers');
 
 test('Check that we\'re ready for authentication testing', t => {
-    t.assert(true, true, 'Must return true');
-    t.assert(process.env.NODE_ENV, 'test', 'Must be in testing environment');
+    t.equals(true, true, 'Must return true');
+    t.equals(process.env.NODE_ENV, 'test', 'Must be in testing environment');
     t.end();
 });
 
