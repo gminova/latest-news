@@ -25,6 +25,7 @@ const createCookie = (username) => {
     return cookie;
 };
 
+//verify cookie
 const verifyCookie = (cookie, SECRET) => {
     const res = verify(cookie, SECRET);
     return res;
