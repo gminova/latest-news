@@ -2,6 +2,7 @@ const test = require('tape');
 const runDbBuild = require('../model/db_build');
 const { findUsername, findHashedPassword } = require('../model/queries/readQueries');
 const { createUser } = require('../model/queries/createQueries');
+const { deleteUser } = require('../model/queries/deleteQueries');
 const { updateUsername, updatePassword } = require('../model/queries/updateQueries');
 
 test('Check that we\'re ready for database testing', t => {
@@ -23,7 +24,7 @@ test("Check test database build is successful", t => {
 });
 
 test('Check username is already registered', t => {
-    const expected = 'Vanessa';
+    const expected = 'vanessa';
     findUsername(expected, (res) => {
         const actual = res.rows[0].username;
         t.equals(expected, actual, 'Username is already registered');
@@ -32,7 +33,7 @@ test('Check username is already registered', t => {
 });
 
 test('Check username hasn\'t been registered', t => {
-    const expected = 'Martin';
+    const expected = 'martin';
     findUsername(expected, (res) => {
         const actual = res.rows.length;
         t.equals(actual, 0, 'Username hasn\'t been registered');
@@ -41,7 +42,7 @@ test('Check username hasn\'t been registered', t => {
 });
 
 test('Check username\'s hash is retrieved', t => {
-    const username = 'Vanessa';
+    const username = 'vanessa';
     findHashedPassword(username, (res) => {
         const actual = res.rows[0].password_hash;
         t.equals(actual, 'ddddddddddddddddd', 'Username\'s hash is retrieved');
@@ -50,7 +51,7 @@ test('Check username\'s hash is retrieved', t => {
 });
 
 test('Check new user has been created', t => {
-    const username = 'Sarah';
+    const username = 'sarah';
     const hashedPassword = 'ssssssssssssssss';
     createUser(username, hashedPassword, (res) => {
         const actual = res.rowCount;
@@ -60,8 +61,8 @@ test('Check new user has been created', t => {
 });
 
 test('Check username has been updated', t => {
-    const newUsername = 'Martina';
-    const oldUsername = 'Sarah';
+    const newUsername = 'martina';
+    const oldUsername = 'sarah';
     const hashedPassword = 'ssssssssssssssss';
     updateUsername(newUsername, oldUsername, hashedPassword, (res) => {
         const actual = res.rowCount;
@@ -73,10 +74,20 @@ test('Check username has been updated', t => {
 test('Check password has been updated', t => {
     const newPasswordHash = 'mmmmmmmmmmmmmmmm';
     const oldPasswordHash = 'ssssssssssssssss';
-    const username = 'Martina';
+    const username = 'martina';
     updatePassword(newPasswordHash, oldPasswordHash, username, (res) => {
         const actual = res.rowCount;
         t.equals(actual, 1, 'Password has been updated');
+        t.end();
+    });
+});
+
+test('Check user has been deleted', t => {
+    const username = 'martina';
+    const hashedPassword = 'mmmmmmmmmmmmmmmm';
+    deleteUser(username, hashedPassword, (res) => {
+        const actual = res.rowCount;
+        t.equals(actual, 1, 'User has been deleted');
         t.end();
     });
 });
