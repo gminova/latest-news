@@ -12,18 +12,31 @@ const { updateUsername, updatePassword } = require('../model/queries/updateQueri
 
 //import home route controller
 const home = require('./home');
-const register = require('./register');
 const news = require('./news');
 const error = require('./error');
 
 //get home route
 router.get('/', home.get);
 //register route
-router.post('/register', req, res, next) => {
+router.post('/register', (req, res, next) => {
     const { username, password } = req.body;
-    createHash(password)
-    createUser(username, )
-}
+    findUsername(username, (res) => {
+        if (!res === []) {
+            new Error('Username is taken');
+        } else {
+            createHash(password, (hash) => {
+                //register user in database
+                createUser(username, hash);
+                //generate cookie
+                const cookie = createCookie(username);
+                const week = 1000 * 60 * 60 * 24 * 7;
+                res.cookie("latest-news", cookie, { maxAge: week * 1, httpOnly: true });
+                res.render("main");
+            });
+        }
+    });
+});
+
 router.get('/news', news.get);
 
 //test 500 route in test mode only
