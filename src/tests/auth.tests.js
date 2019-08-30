@@ -25,7 +25,3 @@ test('Check a password is hashed correctly', t => {
         });
     });
 });
-
-// test('Check user credentials', t => {
-//     checkUser
-// })

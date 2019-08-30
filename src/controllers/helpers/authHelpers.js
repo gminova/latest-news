@@ -20,18 +20,17 @@ const compareHashes = (password, hash, cb) => {
 }
 
 //check user
-// async function checkUser(username, password) {
-//     findHashedPassword(username, (res) => {
-//         if (res.rows.length === 0) {
-//             throw new Error('Unable to find this user');
-//         } else {
-//             const match = await bcrypt.compare(password, res.rows[0].password_hash);
-//             if (match) {
-//                 console.log('Successful log in');
-//             }
-//             console.log('Log in failed, please try again');
-//         }
-//     });
-// }
+async function checkUser(username, password) {
+    const userData = await findHashedPassword(username).rows;
+    if (!userData.length !== 0) {
+        const match = await bcrypt.compare(password, user.passwordHash);
 
-module.exports = { hash, compareHashes }
+        if (match) {
+            console.log('Successful log in');
+        } else {
+            console.log('Log in failed, please try again');
+        }
+    };
+}
+
+module.exports = { hash, compareHashes, checkUser }
