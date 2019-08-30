@@ -63,7 +63,7 @@ test('Check new user has been created', t => {
 test('Check username has been updated', t => {
     const newUsername = 'martina';
     const oldUsername = 'sarah';
-    const hashedPassword = 'ssssssssssssssss';
+    const hashedPassword = '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa';
     updateUsername(newUsername, oldUsername, hashedPassword, (res) => {
         const actual = res.rowCount;
         t.equals(actual, 1, 'Username has been updated');
@@ -72,8 +72,8 @@ test('Check username has been updated', t => {
 });
 
 test('Check password has been updated', t => {
-    const newPasswordHash = 'mmmmmmmmmmmmmmmm';
-    const oldPasswordHash = 'ssssssssssssssss';
+    const newPasswordHash = '$2b$10$3ClVcqaeJbJtsvX9egAvU.UsKeCEA5b08lm2NPJuLXn3mwREDWk7q';
+    const oldPasswordHash = '$2b$10$A4du6FNkp3uC5o2GS.LNLeoQj6qAXMJ42bp4ZgrdMw5asWgwl2iKa';
     const username = 'martina';
     updatePassword(newPasswordHash, oldPasswordHash, username, (res) => {
         const actual = res.rowCount;
@@ -84,7 +84,7 @@ test('Check password has been updated', t => {
 
 test('Check user has been deleted', t => {
     const username = 'martina';
-    const hashedPassword = 'mmmmmmmmmmmmmmmm';
+    const hashedPassword = '$2b$10$3ClVcqaeJbJtsvX9egAvU.UsKeCEA5b08lm2NPJuLXn3mwREDWk7q';
     deleteUser(username, hashedPassword, (res) => {
         const actual = res.rowCount;
         t.equals(actual, 1, 'User has been deleted');
