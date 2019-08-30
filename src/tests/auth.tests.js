@@ -1,5 +1,7 @@
 const test = require('tape');
-const { hash, compareHashes } = require('../controllers/helpers/authHelpers');
+require('dotenv').config();
+const SECRET = process.env.SECRET;
+const { createHash, compareHashes, createCookie, verifyCookie } = require('../controllers/helpers/authHelpers');
 
 test('Check that we\'re ready for authentication testing', t => {
     t.assert(true, true, 'Must return true');
@@ -18,10 +20,20 @@ test('Check password and hash match', t => {
 
 test('Check a password is hashed correctly', t => {
     const password = 'superSecret123^';
-    hash(password, (hash) => {
+    createHash(password, (hash) => {
         compareHashes(password, hash, (err, res) => {
             t.equals(res, true, 'Password is hashed correctly');
             t.end();
         });
     });
+});
+
+
+test('Cookie is generated successfully', t => {
+    const username = 'mary';
+    const expected = 'eyJhbGciOiJIUzI1NiJ9.bWFyeQ.eT3k0ExsBBYod-K8nRoDlrlro9RKy6GiieP4duikiu8';
+    const cookie = createCookie(username);
+    console.log('test cookie', cookie)
+    t.equals(cookie, expected, 'Cookie is generated successfully');
+    t.end();
 });
