@@ -1,6 +1,8 @@
 <div class="block">
-    <a href="/">HOME</a>
-    {{#if loggedIn}}
-    <a href="/logout">Log out</a>
-    {{/if}}
+    <nav class="top-nav">
+        <a class="top-nav__home" href="/">HOME</a>
+        {{#if loggedIn}}
+        <a href="/logout">Log out</a>
+        {{/if}}
+    </nav>
 </div>
