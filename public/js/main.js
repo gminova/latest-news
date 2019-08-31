@@ -1,4 +1,4 @@
-const url = 'https://api.ratesapi.io/api/latest';
+const url = '/fetchNews';
 
 const fetchNews = () => {
     fetch(url)

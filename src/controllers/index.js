@@ -104,6 +104,10 @@ router.get("/logout", (req, res) => {
     res.render("home", { main: true });
 });
 
+router.get("/fetchNews", (req, res) => {
+    console.log('fetch');
+});
+
 //test 500 route in test mode only
 if (process.env.NODE_ENV === "test") {
     const test = require('./test');
