@@ -7,8 +7,8 @@
   "description": "A full-stack app for people who like reading news online",
   "main": "src/index.js",
   "scripts": {
-    "build": "node src/model/db_init.js",
     "start": "node src/index.js",
+    "dbBuild": "node src/model/db_init.js",
     "watch": "nodemon src/index.js",
     "lint": "eslint .",
     "test": "NODE_ENV=test tape src/tests/*tests.js | tap-spec"
