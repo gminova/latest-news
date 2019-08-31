@@ -1,12 +1,17 @@
-<form action="register" method="POST">
-    <label for="register__username">Username:
-        <input id='register__username' type="text" name='username' required>
-    </label>
-    <p>{{ message }}</p>
-    <br>
-    <label for="register__password">Password:
-        <input id='register__password' type="password" name='password' required>
-    </label>
-    <br>
-    <button>Register</button>
-</form>
+<div class="block">
+    <h1 class="main__title">Register</h1>
+    <form class="login__form" action="register" method="POST">
+        <label for="register__username">Username:
+            <br>
+            <input class="form__input" id='register__username' type="text" name='username' required>
+        </label>
+        <p>{{ message }}</p>
+        <label>
+        <label for="register__password">Password:
+            <br>
+            <input class="form__input" id='register__password' type="password" name='password' required>
+        </label>
+        <br>
+        <button class="section--options__login">Register</button>
+    </form>
+</div>

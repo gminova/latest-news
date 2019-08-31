@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
                 res.render('home', { activePage: { home: true } });
             } else {
                 const message = `You're logged in as: ${username}`;
-                res.render('news', { message, main: true });
+                res.render('news', { message, loggedIn });
             }
         });
     }
@@ -60,10 +60,11 @@ router.post('/login', (req, res, next) => {
                         res.render("login", { message, main: true });
                     } else {
                         //generate cookie
+                        const message = `You're logged in as: ${username}`;
                         const cookie = createCookie(username);
                         const week = 1000 * 60 * 60 * 24 * 7;
                         res.cookie("latestNews", cookie, { maxAge: week * 1, httpOnly: true });
-                        res.render("news");
+                        res.render("news", { message });
                     }
                 }
             });
@@ -87,10 +88,11 @@ router.post('/register', (req, res, next) => {
                 //register user in database
                 createUser(username, hash, (user) => {
                     //generate cookie
+                    const message = `You've registered as: ${username}`;
                     const cookie = createCookie(username);
                     const week = 1000 * 60 * 60 * 24 * 7;
                     res.cookie("latestNews", cookie, { maxAge: week * 1, httpOnly: true });
-                    res.render("news");
+                    res.render("news", { message });
                 });
             });
         }
