@@ -118,7 +118,6 @@ router.get("/fetchNews", (req, res) => {
             res.render('error');
         }
         else {
-            console.log('news', news);
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(news));
         }
