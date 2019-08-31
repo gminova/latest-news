@@ -26,9 +26,10 @@ router.get("/register", (req, res) => {
 router.post('/register', (req, res, next) => {
     let { username, password } = req.body;
     findUsername(username, (dbRes) => {
+        //if username exists in database, send back a message
         if (dbRes.length == 1) {
-            console.log('im body', req.body)
-            next(res.render("register"));
+            const message = "Sorry, this username is already taken."
+            res.render("register", { message, main: true });
         } else {
             createHash(password, (hash) => {
                 //register user in database
