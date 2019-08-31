@@ -2,6 +2,16 @@ body {
   font-family: "Spectral", serif;
   background-color: #FFF1E0;
   color: #000;
+  font-size: 1rem;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.block {
+    display: block;
+    margin: 0 auto;
 }
 
 a {
@@ -10,5 +20,19 @@ a {
     color: black;
 }
 .main__title {
+    font-size: 2rem;
 }
 
+.footer { 
+    background-color:  #262A33;
+    color: whitesmoke;  
+    text-align: center;
+    width: 100%;
+    padding: 100px 5px;
+}
+
+
+
+.footer a {
+    color: #FFF1E0;
+}
