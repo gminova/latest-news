@@ -22,20 +22,23 @@ router.get('/', (req, res) => {
 router.get("/register", (req, res) => {
     res.render("register");
 });
+//handle registration request
 router.post('/register', (req, res, next) => {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
     findUsername(username, (dbRes) => {
-        if (!dbRes === []) {
-            throw new Error('Username is taken');
+        if (dbRes.length == 1) {
+            console.log('im body', req.body)
+            next(res.render("register"));
         } else {
             createHash(password, (hash) => {
                 //register user in database
-                createUser(username, hash);
-                //generate cookie
-                const cookie = createCookie(username);
-                const week = 1000 * 60 * 60 * 24 * 7;
-                res.cookie("latest-news", cookie, { maxAge: week * 1, httpOnly: true });
-                res.render("main");
+                createUser(username, hash, (user) => {
+                    //generate cookie
+                    const cookie = createCookie(username);
+                    const week = 1000 * 60 * 60 * 24 * 7;
+                    res.cookie("latest-news", cookie, { maxAge: week * 1, httpOnly: true });
+                    res.render("main");
+                });
             });
         }
     });

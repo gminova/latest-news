@@ -1,8 +1,9 @@
 <form action="register" method="POST">
+    <span>This username is already taken.</span>
+    <br>
     <label for="register__username">Username:
         <input id='register__username' type="text" name='username' required>
     </label>
-    {{ message }}
     <br>
     <label for="register__password">Password:
         <input id='register__password' type="password" name='password' required>
