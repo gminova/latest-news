@@ -27,7 +27,7 @@ router.post('/register', (req, res, next) => {
     let { username, password } = req.body;
     findUsername(username, (dbRes) => {
         //if username exists in database, send back a message
-        if (dbRes.length == 1) {
+        if (dbRes.length === 1) {
             const message = "Sorry, this username is already taken."
             res.render("register", { message, main: true });
         } else {
@@ -38,7 +38,7 @@ router.post('/register', (req, res, next) => {
                     const cookie = createCookie(username);
                     const week = 1000 * 60 * 60 * 24 * 7;
                     res.cookie("latest-news", cookie, { maxAge: week * 1, httpOnly: true });
-                    res.render("main");
+                    res.render("news");
                 });
             });
         }
