@@ -27,7 +27,7 @@ const findHashedPassword = (username, cb) => {
                 return cb(res.rows);
             }
         )
-    };
-}
+    }
+};
 
 module.exports = { findUsername, findHashedPassword }
