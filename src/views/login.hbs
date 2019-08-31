@@ -1,14 +1,16 @@
 <div class="block">
-    <form action="login" method="POST">
+    <form class="login__form" action="login" method="POST">
         <label for="login__username">Username:
-            <input id='login__username' type="text" name='username' required>
+            <br>
+            <input class="form__input" id='login__username' type="text" name='username' required>
         </label>
         <p>{{ message }}</p>
-        <br>
+        <label>
         <label for="login__password">Password:
-            <input id='login__password' type="password" name='password' required>
+            <br>
+            <input class="form__input" id='login__password' type="password" name='password' required>
         </label>
         <br>
-        <button>Log in</button>
+        <button class="section--options__login">Log in</button>
     </form>
 </div>

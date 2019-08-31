@@ -23,7 +23,8 @@ a {
   font-size: 2rem;
 }
 
-.section--about {
+.section--about,
+.login__form {
     background-color: #F2DFCE;
     max-width: 320px;
     display: block;
@@ -52,6 +53,16 @@ a {
   font-size: 16px;
   margin: 5px;
   min-width: 125px;
+}
+
+.login__form {
+    padding: 10px 5px;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.form__input{
+    min-height: 25px;
 }
 
 .footer {
