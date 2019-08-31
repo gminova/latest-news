@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+//import fetchNews helper
+const fetchNews = require('./helpers/fetchNews');
+const https = require('https');
+
 //import authentication helpers
 require('dotenv').config();
 const SECRET = process.env.SECRET;
@@ -102,6 +106,22 @@ router.post('/register', (req, res, next) => {
 router.get("/logout", (req, res) => {
     res.clearCookie("latestNews");
     res.render("home", { main: true });
+});
+
+router.get("/fetchNews", (req, res) => {
+    const key = process.env.API_KEY;
+    const url = `https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=${key}`;
+
+    fetchNews(url, (err, news) => {
+        if (err) {
+            res.writeHead(500, { 'Content-Type': 'text/html' })
+            res.render('error');
+        }
+        else {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(news));
+        }
+    });
 });
 
 //test 500 route in test mode only
