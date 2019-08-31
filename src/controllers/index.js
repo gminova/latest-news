@@ -99,6 +99,11 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.get("/logout", (req, res) => {
+    res.clearCookie("latestNews");
+    res.render("home", { main: true });
+});
+
 //test 500 route in test mode only
 if (process.env.NODE_ENV === "test") {
     const test = require('./test');
