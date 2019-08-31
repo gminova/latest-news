@@ -1,6 +1,6 @@
 body {
   font-family: "Spectral", serif;
-  background-color: #FFF1E0;
+  background-color: #fff1e0;
   color: #000;
   font-size: 1rem;
   display: block;
@@ -10,29 +10,58 @@ body {
 }
 
 .block {
-    display: block;
-    margin: 0 auto;
+  display: block;
+  margin: 0 auto;
 }
 
 a {
-    font-weight: 900;
-    text-decoration: none;
-    color: black;
+  font-weight: 900;
+  text-decoration: none;
+  color: black;
 }
 .main__title {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
-.footer { 
-    background-color:  #262A33;
-    color: whitesmoke;  
-    text-align: center;
-    width: 100%;
-    padding: 100px 5px;
+.section--about {
+    background-color: #F2DFCE;
+    max-width: 320px;
+    display: block;
+    margin: 0 auto;
+    padding: 15px 10px;
 }
 
+.main__title,
+.section--about__title,
+.section--about__text,
+.section--options__title,
+.section--options {
+    margin: 0 auto;
+    padding: 20px 5px;
+}
 
+.section--options__login,
+.section--options__register {
+  background-color: #0D7680;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  min-width: 125px;
+}
+
+.footer {
+  background-color: #262a33;
+  color: whitesmoke;
+  text-align: center;
+  width: 100%;
+  padding: 100px 5px;
+}
 
 .footer a {
-    color: #FFF1E0;
+  color: white;
 }
