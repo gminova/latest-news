@@ -15,7 +15,6 @@ const { findUsername, findHashedPassword } = require('../model/queries/readQueri
 const { updateUsername, updatePassword } = require('../model/queries/updateQueries');
 
 //import home route controller
-const news = require('./news');
 const error = require('./error');
 
 
@@ -97,8 +96,6 @@ router.post('/register', (req, res, next) => {
         }
     });
 });
-
-router.get('/news', news.get);
 
 //test 500 route in test mode only
 if (process.env.NODE_ENV === "test") {
