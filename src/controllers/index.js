@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 //import authentication helpers
+require('dotenv').config();
+const SECRET = process.env.SECRET;
+const cookie = require('cookie');
+const jwt = require('jsonwebtoken');
 const { createHash, compareHashes, createCookie, verifyCookie } = require('./helpers/authHelpers');
 
 //import database helpers
@@ -14,29 +18,27 @@ const { updateUsername, updatePassword } = require('../model/queries/updateQueri
 const news = require('./news');
 const error = require('./error');
 
+
+//
+
 //get home route
 router.get('/', (req, res) => {
-    if (!req.headers.cookie) {
+    const cookies = cookie.parse(req.headers.cookie || "");
+    const loggedIn = cookies.latestNews;
+    if (!loggedIn) {
         res.render('home', { activePage: { home: true } });
     } else {
-        const {
-            latestNews
-        } = parse(req.headers.cookie);
-        if (!latestNews) {
-            res.render('home', { activePage: { home: true } });
-        } else {
-            verifyCookie(latestNews, SECRET, (err, username) => {
-                if (err) {
-                    res.render('home', { activePage: { home: true } });
-                } else {
-                    const message = `You are logged in as: ${username}`;
-                    res.render('news', { loggedIn });
-                }
-            });
-        }
-
+        jwt.verify(loggedIn, SECRET, (err, username) => {
+            if (err) {
+                res.render('home', { activePage: { home: true } });
+            } else {
+                const message = `You're logged in as: ${username}`;
+                res.render('news', { message, main: true });
+            }
+        });
     }
 });
+
 //login route
 router.get('/login', (req, res) => {
     res.render('login');
