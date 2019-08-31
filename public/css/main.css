@@ -1,0 +1,14 @@
+body {
+  font-family: "Spectral", serif;
+  background-color: #FFF1E0;
+  color: #000;
+}
+
+a {
+    font-weight: 900;
+    text-decoration: none;
+    color: black;
+}
+.main__title {
+}
+
