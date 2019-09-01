@@ -109,19 +109,42 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/fetchNews", (req, res) => {
+    const userInput = req.url.split('/fetchNews?=')[1];
+    const userQuery = encodeURIComponent(userInput);
+    console.log("userquery", userQuery)
     const key = process.env.API_KEY;
-    const url = `https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=${key}`;
+    const key2 = process.env.API_KEY2;
+    let news = undefined;
+    let news2 = undefined;
 
-    fetchNews(url, (err, news) => {
+    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${userQuery}&api-key=${key}`;
+    const url2 = `https://newsapi.org/v2/everything?q=${userQuery}&apiKey=${key2}`;
+    
+    fetchNews(url, (err, response) => {
         if (err) {
-            res.writeHead(500, { 'Content-Type': 'text/html' })
-            res.render('error');
+            news = err;
         }
         else {
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify(news));
+            news = JSON.stringify(response);
+            console.log("news", typeof news)
         }
+
+        fetchNews(url2, (err, response) => {
+            if (err) {
+                news2 = err;
+            }
+            else {
+                news2 = JSON.stringify(response);
+                console.log("news2", typeof news2)
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify([{name: "hello"}]));
+            }
+        });
     });
+
+
+
+    
 });
 
 //test 500 route in test mode only
