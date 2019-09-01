@@ -109,8 +109,9 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/fetchNews", (req, res) => {
-    const userInput = 'latest news';
+    const userInput = req.url.split('/fetchNews?=')[1];
     const userQuery = encodeURIComponent(userInput);
+    console.log("userquery", userQuery)
     const key = process.env.API_KEY;
     const key2 = process.env.API_KEY2;
 
@@ -126,6 +127,17 @@ router.get("/fetchNews", (req, res) => {
             res.end(JSON.stringify(news));
         }
     });
+
+    // fetchNews(url2, (err, news) => {
+    //     if (err) {
+    //         res.writeHead(500, { 'Content-Type': 'text/html' });
+    //         res.render('error');
+    //     }
+    //     else {
+    //         res.writeHead(200, { 'Content-Type': 'application/json' });
+    //         res.end(JSON.stringify(news));
+    //     }
+    // });
 });
 
 //test 500 route in test mode only

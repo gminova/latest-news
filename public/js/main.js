@@ -1,5 +1,4 @@
-const url = '/fetchNews';
-const userInput = document.querySelector('.search__input').value.toString();
+let url = '/fetchNews?=world';
 
 const fetchNews = () => {
     fetch(url)
@@ -11,3 +10,10 @@ const fetchNews = () => {
 (function () {
     fetchNews();
 })();
+
+const search = document.querySelector('.search__btn');
+search.onclick = function() {
+    let userInput = document.querySelector('.search__input').value.toString();
+    url = `/fetchNews?=${userInput}`;
+    fetchNews();
+}
