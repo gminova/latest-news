@@ -109,6 +109,8 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/fetchNews", (req, res) => {
+    const userInput = 'latest news';
+    const userQuery = encodeURIComponent(userInput);
     const key = process.env.API_KEY;
     const key2 = process.env.API_KEY2;
 
