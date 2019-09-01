@@ -110,11 +110,13 @@ router.get("/logout", (req, res) => {
 
 router.get("/fetchNews", (req, res) => {
     const key = process.env.API_KEY;
-    const url = `https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=${key}`;
+    const key2 = process.env.API_KEY2;
 
+    const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${userQuery}&api-key=${key}`;
+    const url2 = `https://newsapi.org/v2/everything?q=${userQuery}&apiKey=${key2}`;
     fetchNews(url, (err, news) => {
         if (err) {
-            res.writeHead(500, { 'Content-Type': 'text/html' })
+            res.writeHead(500, { 'Content-Type': 'text/html' });
             res.render('error');
         }
         else {
