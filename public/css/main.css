@@ -25,11 +25,11 @@ a {
 
 .section--about,
 .login__form {
-    background-color: #F2DFCE;
-    max-width: 320px;
-    display: block;
-    margin: 0 auto;
-    padding: 15px 10px;
+  background-color: #f2dfce;
+  max-width: 320px;
+  display: block;
+  margin: 0 auto;
+  padding: 15px 10px;
 }
 
 .main__title,
@@ -37,13 +37,13 @@ a {
 .section--about__text,
 .section--options__title,
 .section--options {
-    margin: 0 auto;
-    padding: 20px 5px;
+  margin: 0 auto;
+  padding: 20px 5px;
 }
 
 .section--options__login,
 .section--options__register {
-  background-color: #0D7680;
+  background-color: #0d7680;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -56,13 +56,13 @@ a {
 }
 
 .login__form {
-    padding: 10px 5px;
-    margin-top: 50px;
-    margin-bottom: 200px;
+  padding: 10px 5px;
+  margin-top: 50px;
+  margin-bottom: 200px;
 }
 
-.form__input{
-    min-height: 25px;
+.form__input {
+  min-height: 25px;
 }
 
 .footer {
@@ -77,9 +77,13 @@ a {
   color: white;
 }
 
+.block--search {
+  max-width: 500px;
+}
+
 .search {
   display: grid;
-  grid-template-columns: 12fr 1fr;
+  grid-template-columns: 25fr 1fr;
   text-align: center;
 }
 .search__input {
@@ -91,11 +95,11 @@ a {
 }
 
 .search__btn {
-  background-color: #F2DFCE;
+  background-color: #f2dfce;
   border: none;
   padding: 15px 15px;
   display: inline-block;
-  margin: 5px 5px;
+  margin: 5px 10px 5px 5px;
   width: 50px;
   height: 50px;
 }
