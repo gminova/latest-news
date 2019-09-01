@@ -114,30 +114,37 @@ router.get("/fetchNews", (req, res) => {
     console.log("userquery", userQuery)
     const key = process.env.API_KEY;
     const key2 = process.env.API_KEY2;
+    let news = undefined;
+    let news2 = undefined;
 
     const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${userQuery}&api-key=${key}`;
     const url2 = `https://newsapi.org/v2/everything?q=${userQuery}&apiKey=${key2}`;
-    fetchNews(url, (err, news) => {
+    
+    fetchNews(url, (err, response) => {
         if (err) {
-            res.writeHead(500, { 'Content-Type': 'text/html' });
-            res.render('error');
+            news = err;
         }
         else {
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify(news));
+            news = JSON.stringify(response);
+            console.log("news", typeof news)
         }
+
+        fetchNews(url2, (err, response) => {
+            if (err) {
+                news2 = err;
+            }
+            else {
+                news2 = JSON.stringify(response);
+                console.log("news2", typeof news2)
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify([{name: "hello"}]));
+            }
+        });
     });
 
-    // fetchNews(url2, (err, news) => {
-    //     if (err) {
-    //         res.writeHead(500, { 'Content-Type': 'text/html' });
-    //         res.render('error');
-    //     }
-    //     else {
-    //         res.writeHead(200, { 'Content-Type': 'application/json' });
-    //         res.end(JSON.stringify(news));
-    //     }
-    // });
+
+
+    
 });
 
 //test 500 route in test mode only
