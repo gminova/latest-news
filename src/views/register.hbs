@@ -3,13 +3,13 @@
     <form class="login__form" action="register" method="POST">
         <label for="register__username">Username:
             <br>
-            <input class="form__input" id='register__username' type="text" name='username' required>
+            <input class="form__input" id='register__username' type="text" name='username' minlength="5" maxlength="15" required>
         </label>
         <p>{{ message }}</p>
         <label>
         <label for="register__password">Password:
             <br>
-            <input class="form__input" id='register__password' type="password" name='password' required>
+            <input class="form__input" id='register__password' type="password" name='password' minlength="5" maxlength="15" required>
         </label>
         <br>
         <button class="section--options__login">Register</button>
