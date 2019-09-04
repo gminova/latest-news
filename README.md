@@ -8,7 +8,7 @@ Screenshots:
 ![](https://github.com/gminova/latest-news/blob/master/public/images/Screenshot%20from%202019-09-05%2000-22-17.png?raw=true)
 ![](https://github.com/gminova/latest-news/blob/master/public/images/Screenshot%20from%202019-09-05%2000-23-06.png?raw=true)
 
-TECH-STACK & TOOLS:
+TECH-STACK & TOOLS:  
 ExpressJS, HandlebarsJS, PostgreSQL, HTML, CSS, Tape, supertest, Kanban, Git, GitHub, Travis CI, Heroku, VS Code
 
 Features:
