@@ -28,6 +28,22 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.top-nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.top-nav__home {
+  padding: 15px 15px;
+  font-size: 20px;
+  text-align: left;
+}
+.top-nav__logout {
+  padding: 15px 15px;
+  font-size: 20px;
+  text-align: right;
+}
 .main__title {
   font-size: 2rem;
 }
@@ -39,6 +55,10 @@ a {
   display: block;
   margin: 0 auto;
   padding: 15px 10px;
+}
+
+.section--news{
+  text-align: center;
 }
 
 .main__title,
