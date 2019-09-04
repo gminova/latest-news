@@ -133,7 +133,7 @@ router.get("/fetchNews", (req, res) => {
                 else {
                     news2 = JSON.stringify(response);
                     res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify([news, news2]));
+                    res.end(JSON.stringify({news, news2}));
                 }
             });
         }

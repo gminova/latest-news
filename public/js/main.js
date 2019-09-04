@@ -1,4 +1,16 @@
-let url = '/fetchNews?=world';
+const input = document.querySelector('.search__input').value;
+const searchBtn = document.querySelector('.search__btn');
+//handle search click event
+searchBtn.onclick = function () {
+    let input = document.querySelector('.search__input').value.toString();
+    fetchNews(input);
+}
+//handle search Enter event
+document.querySelector('.search__input').addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        searchBtn.click();
+    }
+});
 
 //all stories ready to append to the DOM will be pushed here
 let stories = [];
@@ -13,6 +25,19 @@ function article() {
         this.paragraph = undefined,
         this.source = undefined
 }
+
+const fetchNews = (input) => { 
+    const url = `/fetchNews?=${input}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(json => filterResponse(json))
+        .catch(error => console.error(error));
+}
+
+(function () {
+    fetchNews("world");
+})();
 
 const renderStory = e => {
     const story = document.createElement("article");
@@ -34,7 +59,7 @@ const renderStory = e => {
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
     story.appendChild(link);
-    
+
     const img = document.createElement("img");
     img.classList.add("story__img");
     img.src = e.img;
@@ -66,8 +91,9 @@ const renderStory = e => {
 
 //isolate filtering of original response
 const filterResponse = (json) => {
-    if (JSON.parse(json[0]).statusCode === 200) {
-        const news = JSON.parse(json[0]).body.response.docs;
+    console.log("json", json.news)
+    if (JSON.parse(json.news).statusCode === 200) {
+        const news = JSON.parse(json.news).body.response.docs;
 
         news.map(a => {
             let story = new article();
@@ -83,8 +109,8 @@ const filterResponse = (json) => {
         });
     }
 
-    if (JSON.parse(json[1]).statusCode === 200) {
-        const news2 = JSON.parse(json[1]).body.articles;
+    if (JSON.parse(json.news2).statusCode === 200) {
+        const news2 = JSON.parse(json.news2).body.articles;
 
         news2.map(a => {
             let story = new article();
@@ -104,22 +130,3 @@ const filterResponse = (json) => {
     const container = document.querySelector(".main__container");
     stories.map(story => container.appendChild(renderStory(story)));
 }
-
-const fetchNews = () => {
-    fetch(url)
-        .then(response => response.json())
-        .then(json => filterResponse(json))
-        .catch(error => console.error(error));
-}
-
-(function () {
-    fetchNews();
-})();
-
-const search = document.querySelector('.search__btn');
-search.onclick = function () {
-    let userInput = document.querySelector('.search__input').value.toString();
-    url = `/fetchNews?=${userInput}`;
-    fetchNews();
-}
-
