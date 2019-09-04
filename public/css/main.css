@@ -130,6 +130,7 @@ a {
 .story {
   background-color: white;
   padding: 15px 30px;
+  border-bottom: 1px solid black;
 }
 
 .story__title {

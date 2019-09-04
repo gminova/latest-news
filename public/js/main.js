@@ -36,7 +36,7 @@ const fetchNews = (input) => {
 }
 
 (function () {
-    fetchNews("technology");
+    fetchNews("world");
 })();
 
 const renderStory = e => {
