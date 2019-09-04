@@ -18,6 +18,8 @@ Features:
 4. JWT/Cookie
 5. Search bar/Fetch request (client-side)
 6. NodeJS request module on back-end
+7. Scroll to top button
+8. Search bar
 
 Stretch-goals:
 1. Like news stories
