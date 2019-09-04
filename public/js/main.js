@@ -36,7 +36,7 @@ const fetchNews = (input) => {
 }
 
 (function () {
-    fetchNews("world");
+    fetchNews("google");
 })();
 
 const renderStory = e => {
@@ -92,16 +92,16 @@ const renderStory = e => {
 
 //isolate filtering of original response
 const filterResponse = (json) => {
-    console.log("json", JSON.parse(json.news))
     if (JSON.parse(json.news).statusCode === 200) {
         const news = JSON.parse(json.news).body.response.docs;
-        console.log("news1", news)
 
         news.map(a => {
             let story = new article();
             story.title = a.headline.main;
             story.snippet = a.snippet;
-            story.img = "https://www.nytimes.com/" + a.multimedia[0].url;
+            a.multimedia.length !== 0 ?
+                story.img = "https://www.nytimes.com/" + a.multimedia[0].url :
+                story.img = "../images/noImg.jpg";
             story.url = a.web_url;
             story.author = a.byline.original;
             story.date = a.pub_date.split("T")[0];
@@ -112,9 +112,8 @@ const filterResponse = (json) => {
     }
 
     if (JSON.parse(json.news2).statusCode === 200) {
-        const news2 = JSON.parse(json.news2).body.articles;
-        console.log("news2", news2)
 
+        const news2 = JSON.parse(json.news2).body.articles;
         news2.map(a => {
             let story = new article();
             story.title = a.title;
