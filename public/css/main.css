@@ -1,3 +1,12 @@
+html {
+  margin: 0 auto;
+  padding: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 body {
   font-family: "Spectral", serif;
   background-color: #fff1e0;
@@ -108,42 +117,75 @@ a {
   height: 15px;
 }
 
-
 /*STORIES*/
-.main__container{
+.main__container {
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 40px;
 }
-.story{
-
-}
-
-.story__title{
-
-}
-
-.story__snippet{
-
+.story {
+  background-color: white;
+  padding: 15px 30px;
 }
 
-.story__img{
-
+.story__title {
+  font-size: 3rem;
 }
 
-.story__author{
-
+.story__snippet {
+  font-size: 1.5rem;
 }
 
-.story__date{
-
+.story__img {
+  max-height: 400px;
+  max-width: 400px;
 }
 
-.story__paragraph{
-
+.story__author {
+  font-family: "Muli", sans-serif;
 }
 
-.story__source{
+.story__date {
+  text-align: right;
+  font-size: 0.8rem;
+}
 
+.story__paragraph {
+  text-align: left;
+}
+
+.story__source {
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 900px) {
+  .main__container {
+    max-width: 650px;
+  }
+  .story__title {
+    font-size: 1.5rem;
+  }
+  
+  .story__snippet {
+    font-size: 1rem;
+  }
+
+  .story__img {
+    max-height: 600px;
+    max-width: 600px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .main__container {
+    max-width: 350px;
+  }
+  .story__img {
+    max-height: 250px;
+    max-width: 250px;
+  }
 }

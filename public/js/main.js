@@ -36,7 +36,7 @@ const fetchNews = (input) => {
 }
 
 (function () {
-    fetchNews("world");
+    fetchNews("technology");
 })();
 
 const renderStory = e => {
@@ -48,38 +48,39 @@ const renderStory = e => {
     title.textContent = e.title;
     story.appendChild(title);
 
-    const snippet = document.createElement("span");
-    snippet.classList.add("story__snippet");
-    snippet.textContent = e.snippet;
-    story.appendChild(snippet);
-
     const link = document.createElement("a");
     link.classList.add("story__link");
     link.href = e.url;
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
     story.appendChild(link);
+    link.appendChild(title);
+
+    const snippet = document.createElement("p");
+    snippet.classList.add("story__snippet");
+    snippet.textContent = e.snippet;
+    story.appendChild(snippet);
 
     const img = document.createElement("img");
     img.classList.add("story__img");
     img.src = e.img;
     img.alt = "Story image";
-    link.appendChild(img);
+    story.appendChild(img);
 
     const author = document.createElement("h3");
     author.classList.add("story__author");
     author.textContent = e.author;
     story.appendChild(author);
 
-    const date = document.createElement("h4");
-    date.classList.add("story__date");
-    date.textContent = e.date;
-    story.appendChild(date);
-
     const paragraph = document.createElement("p");
     paragraph.classList.add("story__paragraph");
     paragraph.textContent = e.paragraph;
     story.appendChild(paragraph);
+
+    const date = document.createElement("h4");
+    date.classList.add("story__date");
+    date.textContent = "Published: " + e.date;
+    story.appendChild(date);
 
     const source = document.createElement("h5");
     source.classList.add("story__source");
