@@ -119,32 +119,25 @@ router.get("/fetchNews", (req, res) => {
 
     const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${userQuery}&api-key=${key}`;
     const url2 = `https://newsapi.org/v2/everything?q=${userQuery}&apiKey=${key2}`;
-    
+
     fetchNews(url, (err, response) => {
         if (err) {
             news = err;
         }
         else {
             news = JSON.stringify(response);
-            console.log("news", typeof news)
+            fetchNews(url2, (err, response) => {
+                if (err) {
+                    news2 = err;
+                }
+                else {
+                    news2 = JSON.stringify(response);
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({news, news2}));
+                }
+            });
         }
-
-        fetchNews(url2, (err, response) => {
-            if (err) {
-                news2 = err;
-            }
-            else {
-                news2 = JSON.stringify(response);
-                console.log("news2", typeof news2)
-                res.writeHead(200, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify([{name: "hello"}]));
-            }
-        });
     });
-
-
-
-    
 });
 
 //test 500 route in test mode only
