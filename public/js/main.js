@@ -29,7 +29,7 @@ const filterResponse = (json) => {
             story.date = a.pub_date.split("T")[0];
             story.paragraph = a.lead_paragraph;
             story.source = a.source;
-            // stories.push(story);
+            stories.push(story);
         });
     }
 
