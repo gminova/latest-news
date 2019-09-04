@@ -14,6 +14,56 @@ function article() {
         this.source = undefined
 }
 
+const renderStory = e => {
+    const story = document.createElement("article");
+    story.classList.add("story");
+
+    const title = document.createElement("h2");
+    title.classList.add("story__title");
+    title.textContent = e.title;
+    story.appendChild(title);
+
+    const snippet = document.createElement("span");
+    snippet.classList.add("story__snippet");
+    snippet.textContent = e.snippet;
+    story.appendChild(snippet);
+
+    const link = document.createElement("a");
+    link.classList.add("story__link");
+    link.href = e.url;
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+    story.appendChild(link);
+    
+    const img = document.createElement("img");
+    img.classList.add("story__img");
+    img.src = e.img;
+    img.alt = "Story image";
+    link.appendChild(img);
+
+    const author = document.createElement("h3");
+    author.classList.add("story__author");
+    author.textContent = e.author;
+    story.appendChild(author);
+
+    const date = document.createElement("h4");
+    date.classList.add("story__date");
+    date.textContent = e.date;
+    story.appendChild(date);
+
+    const paragraph = document.createElement("p");
+    paragraph.classList.add("story__paragraph");
+    paragraph.textContent = e.paragraph;
+    story.appendChild(paragraph);
+
+    const source = document.createElement("h5");
+    source.classList.add("story__source");
+    source.textContent = "Source: " + e.source;
+    story.appendChild(source);
+
+    return story;
+}
+
 //isolate filtering of original response
 const filterResponse = (json) => {
     if (JSON.parse(json[0]).statusCode === 200) {
@@ -35,7 +85,6 @@ const filterResponse = (json) => {
 
     if (JSON.parse(json[1]).statusCode === 200) {
         const news2 = JSON.parse(json[1]).body.articles;
-        console.log(news2)
 
         news2.map(a => {
             let story = new article();
@@ -50,6 +99,10 @@ const filterResponse = (json) => {
             stories.push(story);
         });
     }
+
+    //render all sotires
+    const container = document.querySelector(".main__container");
+    stories.map(story => container.appendChild(renderStory(story)));
 }
 
 const fetchNews = () => {
