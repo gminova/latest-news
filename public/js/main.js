@@ -26,7 +26,7 @@ function article() {
         this.source = undefined
 }
 
-const fetchNews = (input) => { 
+const fetchNews = (input) => {
     const url = `/fetchNews?=${input}`;
 
     fetch(url)
@@ -91,9 +91,10 @@ const renderStory = e => {
 
 //isolate filtering of original response
 const filterResponse = (json) => {
-    console.log("json", json.news)
+    console.log("json", JSON.parse(json.news))
     if (JSON.parse(json.news).statusCode === 200) {
         const news = JSON.parse(json.news).body.response.docs;
+        console.log("news1", news)
 
         news.map(a => {
             let story = new article();
@@ -111,6 +112,7 @@ const filterResponse = (json) => {
 
     if (JSON.parse(json.news2).statusCode === 200) {
         const news2 = JSON.parse(json.news2).body.articles;
+        console.log("news2", news2)
 
         news2.map(a => {
             let story = new article();
@@ -126,7 +128,21 @@ const filterResponse = (json) => {
         });
     }
 
+    //remove previous stories
+    const removeStories = s => {
+        while (s.firstChild) {
+            s.removeChild(s.firstChild);
+        }
+    };
+
     //render all stories
-    const container = document.querySelector(".main__container");
-    stories.map(story => container.appendChild(renderStory(story)));
+    const renderStories = stories => {
+        const container = document.querySelector(".main__container");
+        removeStories(container);
+        stories.map(story => container.appendChild(renderStory(story)));
+        //empty array when rendered
+        stories.length = [];
+    }
+
+    renderStories(stories);
 }

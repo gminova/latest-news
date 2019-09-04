@@ -107,3 +107,43 @@ a {
   width: 15px;
   height: 15px;
 }
+
+
+/*STORIES*/
+.main__container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.story{
+
+}
+
+.story__title{
+
+}
+
+.story__snippet{
+
+}
+
+.story__img{
+
+}
+
+.story__author{
+
+}
+
+.story__date{
+
+}
+
+.story__paragraph{
+
+}
+
+.story__source{
+
+}
