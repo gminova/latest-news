@@ -112,7 +112,6 @@ const filterResponse = (json) => {
     }
 
     if (JSON.parse(json.news2).statusCode === 200) {
-        console.log("unparsed news2", JSON.parse(json.news2))
 
         const news2 = JSON.parse(json.news2).body.articles;
         news2.map(a => {
