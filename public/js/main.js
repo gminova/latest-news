@@ -100,7 +100,7 @@ const filterResponse = (json) => {
         });
     }
 
-    //render all sotires
+    //render all stories
     const container = document.querySelector(".main__container");
     stories.map(story => container.appendChild(renderStory(story)));
 }
