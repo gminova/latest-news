@@ -36,7 +36,7 @@ const fetchNews = (input) => {
 }
 
 (function () {
-    fetchNews("brexit");
+    fetchNews("google");
 })();
 
 const renderStory = e => {

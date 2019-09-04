@@ -6,6 +6,8 @@ html {
   top: 0;
   bottom: 0;
   scroll-behavior: smooth;
+  border: none;
+  overflow-x: hidden;
 }
 
 body {
@@ -17,11 +19,7 @@ body {
   margin: 0 auto;
   text-align: center;
   width: 100%;
-}
-
-.block {
-  display: block;
-  margin: 0 auto;
+  overflow-x: hidden;
 }
 
 a {
@@ -58,7 +56,7 @@ a {
   padding: 15px 10px;
 }
 
-.section--news{
+.section--news {
   text-align: center;
 }
 
@@ -140,8 +138,8 @@ a {
 
 /*STORIES*/
 .main__container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   align-content: center;
   align-items: center;
   max-width: 900px;
@@ -203,7 +201,7 @@ a {
   font-size: 20px;
 }
 
-#myBtn a{
+#myBtn a {
   color: white;
 }
 
@@ -218,7 +216,7 @@ a {
   .story__title {
     font-size: 1.5rem;
   }
-  
+
   .story__snippet {
     font-size: 1rem;
   }
