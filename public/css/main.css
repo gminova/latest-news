@@ -28,6 +28,11 @@ a {
   color: black;
 }
 
+.block {
+  display: block;
+  margin: 0 auto;
+}
+
 .top-nav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -207,6 +212,10 @@ a {
 
 #myBtn:hover {
   transform: scale(1.1);
+}
+
+.section--error__img{
+  max-height: 200px;
 }
 
 @media screen and (max-width: 900px) {
