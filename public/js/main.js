@@ -1,8 +1,8 @@
 let url = '/fetchNews?=world';
 
-//all articles ready to append to the DOM will be pushed here
+//all stories ready to append to the DOM will be pushed here
 let stories = [];
-//each article will be an instance of the article constructor
+//each story will be an instance of the article constructor
 function article() {
     this.title = undefined,
         this.snippet = undefined,
