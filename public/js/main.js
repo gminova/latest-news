@@ -18,7 +18,6 @@ function article() {
 const filterResponse = (json) => {
     if (JSON.parse(json[0]).statusCode === 200) {
         const news = JSON.parse(json[0]).body.response.docs;
-        console.log(news);
 
         news.map(a => {
             let story = new article();
@@ -30,14 +29,27 @@ const filterResponse = (json) => {
             story.date = a.pub_date.split("T")[0];
             story.paragraph = a.lead_paragraph;
             story.source = a.source;
-            stories.push(story);
+            // stories.push(story);
         });
     }
 
     if (JSON.parse(json[1]).statusCode === 200) {
-        const news2 = JSON.parse(json[1]).body;
-    }
+        const news2 = JSON.parse(json[1]).body.articles;
+        console.log(news2)
 
+        news2.map(a => {
+            let story = new article();
+            story.title = a.title;
+            story.snippet = a.description;
+            story.img = a.urlToImage;
+            story.url = a.url;
+            story.author = a.author;
+            story.date = a.publishedAt.split("T")[0];
+            story.paragraph = a.content;
+            story.source = a.source.name;
+            stories.push(story);
+        });
+    }
 }
 
 const fetchNews = () => {
