@@ -153,7 +153,7 @@ a {
 }
 .story {
   background-color: white;
-  padding: 15px 30px;
+  padding: 10px 10px;
   border-bottom: 1px solid black;
 }
 
@@ -220,7 +220,7 @@ a {
 
 @media screen and (max-width: 900px) {
   .main__container {
-    max-width: 650px;
+    max-width: 350px;
   }
   .story__title {
     font-size: 1.5rem;
@@ -231,13 +231,13 @@ a {
   }
 
   .story__img {
-    max-height: 600px;
-    max-width: 600px;
+    max-height: 300px;
+    max-width: 300px;
   }
 }
 @media screen and (max-width: 400px) {
   .main__container {
-    max-width: 350px;
+    max-width: 300px;
   }
   .story__img {
     max-height: 250px;
